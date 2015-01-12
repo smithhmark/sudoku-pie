@@ -18,8 +18,12 @@ def row(brd, ii):
     start_idx = ii * WIDTH
     return brd[start_idx:(start_idx + WIDTH)]
 
-def column(row,ii):
-    pass
+def column(brd,ii):
+    # index = rownum * rowlen + colnum
+    col = []
+    for ri in range(HEIGHT):
+        col.append(brd[ri * WIDTH + ii])
+    return col
 
 def validate(brd):
     down = [set() for unused in range(9)]

@@ -23,3 +23,14 @@ def test_row():
     assert(rrow == [9,10,11,12,13,14,15,16,17])
     rrow = board.row(ibrd, 8)
     assert(rrow == [72,73,74,75,76,77,78,79,80])
+
+def test_column():
+    ibrd = board.illegal()
+    rcol = board.column(ibrd, 0)
+    ecol = [0,9,18,27,36,45,54,63,72]
+    print("%s ?= %s" %(rcol, ecol))
+    assert(rcol == [0,9,18,27,36,45,54,63,72])
+    rcol = board.column(ibrd, 1)
+    assert(rcol == [1,10,19,28,37,46,55,64,73])
+    rcol = board.column(ibrd, 8)
+    assert(rcol == [8,17,26,35,44,53,62,71,80])
