@@ -34,3 +34,23 @@ def test_column():
     assert(rcol == [1,10,19,28,37,46,55,64,73])
     rcol = board.column(ibrd, 8)
     assert(rcol == [8,17,26,35,44,53,62,71,80])
+
+def test_square():
+    ibrd = board.illegal()
+    rsqr = board.square(ibrd, 0)
+    esqr = [0,1,2,9,10,11,18,19,20]
+    print("%s ?= %s" %(rsqr, esqr))
+    assert(rsqr == esqr)
+    print("yes")
+
+    rsqr = board.square(ibrd, 1)
+    esqr = [3,4,5,12,13,14,21,22,23]
+    print("%s ?= %s" %(rsqr, esqr))
+    assert(rsqr == esqr)
+    print("yes")
+
+    rsqr = board.square(ibrd, 3)
+    esqr = [27,28,29,36,37,38,45,46,47]
+    print("%s ?= %s" %(rsqr, esqr))
+    assert(rsqr == esqr)
+    print("yes")
