@@ -1,6 +1,5 @@
 # board.py
 
-
 HEIGHT = 9
 WIDTH = 9
 LENGTH = HEIGHT * WIDTH
