@@ -14,11 +14,13 @@ def illegal():
     return brd
 
 def row(brd, ii):
+    # returns the contents of a row, id'd by <ii>
     # index = rownum * rowlen + colnum
     start_idx = ii * WIDTH
     return brd[start_idx:(start_idx + WIDTH)]
 
 def column(brd,ii):
+    # returns the contents of a column, id'd by <ii>
     # index = rownum * rowlen + colnum
     col = []
     for ri in range(HEIGHT):
@@ -26,6 +28,7 @@ def column(brd,ii):
     return col
 
 def square(brd, ii):
+    # returns the contents of a square specified by <ii>
     # squares are id'd by index, starting at 0 in the "upper left" corner, 
     # across then down
     sqr = []
