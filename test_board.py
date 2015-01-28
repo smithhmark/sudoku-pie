@@ -74,3 +74,15 @@ def test_get_square():
     rr, cc = 3, 3
     sqr = board.get_square(rr, cc)
     assert sqr == 4
+
+def test__index():
+    tmp_brd = board.illegal()
+    print(tmp_brd[-9:])
+    assert board._index(0,0) == 0
+    assert board._index(0,1) == 9
+    assert board._index(1,0) == 1
+    assert board._index(1,1) == 10
+    assert board._index(8,8) == 80
+    assert board._index(9,9) == -1
+    assert board._index(-1,0) == -1
+    assert board._index(0,-1) == -1

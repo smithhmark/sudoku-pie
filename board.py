@@ -13,10 +13,21 @@ def illegal():
         brd[idx] = idx
     return brd
 
+def _index(col, row):
+    # find the offset into a backing array from a position
+    # index = rownum * rowlen + colnum
+    if col >= HEIGHT or row >= WIDTH:
+        ### should throw exception
+        return -1
+    if col < 0 or row < 0:
+        ### should throw exception
+        return -1
+    return row * WIDTH + col
+
 def row(brd, ii):
     # returns the contents of a row, id'd by <ii>
     # index = rownum * rowlen + colnum
-    start_idx = ii * WIDTH
+    start_idx = _index(0, ii)
     return brd[start_idx:(start_idx + WIDTH)]
 
 def column(brd,ii):
@@ -24,7 +35,8 @@ def column(brd,ii):
     # index = rownum * rowlen + colnum
     col = []
     for ri in range(HEIGHT):
-        col.append(brd[ri * WIDTH + ii])
+        col.append(brd[_index(ii, ri)])
+        #col.append(brd[ri * WIDTH + ii])
     return col
 
 SQUARES = [
