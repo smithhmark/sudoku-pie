@@ -60,4 +60,15 @@ def validate(brd):
     across = [set() for unused in range(9)]
     squares = [set() for unused in range(9)]
 
-
+def validate_set(data):
+    # validate that a single row, column, or square is valid
+    for xx in range(1,10):
+        yy = data.count(xx)
+        if yy not in [0,1]:
+            return False
+    for ii in data:
+        if ii not in list(range(10)):
+            return False
+    if len(data) != 9:
+        return False
+    return True

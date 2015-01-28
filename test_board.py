@@ -54,3 +54,14 @@ def test_square():
     print("%s ?= %s" %(rsqr, esqr))
     assert(rsqr == esqr)
     print("yes")
+
+
+def test_validate_set():
+    row = [1,2,3,4,5,6,7,8,9]
+    assert board.validate_set(row)
+
+    row = [0,0,0,4,0,0,0,0,0]
+    assert board.validate_set(row)
+
+    row = [0,0,0,4,0,4,0,0,0]
+    assert not board.validate_set(row)
