@@ -27,10 +27,25 @@ def column(brd,ii):
         col.append(brd[ri * WIDTH + ii])
     return col
 
+SQUARES = [
+    [0,0,0,1,1,1,2,2,2,],
+    [0,0,0,1,1,1,2,2,2,],
+    [0,0,0,1,1,1,2,2,2,],
+    [3,3,3,4,4,4,5,5,5,],
+    [3,3,3,4,4,4,5,5,5,],
+    [3,3,3,4,4,4,5,5,5,],
+    [6,6,6,7,7,7,8,8,8,],
+    [6,6,6,7,7,7,8,8,8,],
+    [6,6,6,7,7,7,8,8,8,],
+    ]
+
+def get_square(rowid, columnid):
+    return SQUARES[rowid][columnid]
+
 def square(brd, ii):
     # returns the contents of a square specified by <ii>
     # squares are id'd by index, starting at 0 in the "upper left" corner, 
-    # across then down
+    # across then down, see SQUARES global.
     sqr = []
     if ii in [0,3,6]:
         colstart = 0
@@ -75,19 +90,4 @@ def validate_set(data):
     if len(data) != 9:
         return False
     return True
-
-SQUARES = [
-    [0,0,0,1,1,1,2,2,2,],
-    [0,0,0,1,1,1,2,2,2,],
-    [0,0,0,1,1,1,2,2,2,],
-    [3,3,3,4,4,4,5,5,5,],
-    [3,3,3,4,4,4,5,5,5,],
-    [3,3,3,4,4,4,5,5,5,],
-    [6,6,6,7,7,7,8,8,8,],
-    [6,6,6,7,7,7,8,8,8,],
-    [6,6,6,7,7,7,8,8,8,],
-    ]
-
-def get_square(rowid, columnid):
-    return SQUARES[rowid][columnid]
 
