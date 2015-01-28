@@ -65,3 +65,12 @@ def test_validate_set():
 
     row = [0,0,0,4,0,4,0,0,0]
     assert not board.validate_set(row)
+
+def test_get_square():
+    rr, cc = 0, 0
+    sqr = board.get_square(rr, cc)
+    assert sqr == 0
+
+    rr, cc = 3, 3
+    sqr = board.get_square(rr, cc)
+    assert sqr == 4
