@@ -68,12 +68,21 @@ def test_validate_set():
 
 def test_get_square():
     rr, cc = 0, 0
-    sqr = board.get_square(rr, cc)
+    sqr = board.get_square(cc, rr)
     assert sqr == 0
 
     rr, cc = 3, 3
-    sqr = board.get_square(rr, cc)
+    sqr = board.get_square(cc, rr)
     assert sqr == 4
+
+    rr, cc = 0, 3
+    sqr = board.get_square(cc, rr)
+    assert sqr == 1
+
+    rr, cc = 3, 0
+    sqr = board.get_square(cc, rr)
+    print(sqr)
+    assert sqr == 3
 
 def test__index():
     tmp_brd = board.illegal()
@@ -86,3 +95,39 @@ def test__index():
     assert board._index(9,9) == -1
     assert board._index(-1,0) == -1
     assert board._index(0,-1) == -1
+
+def test_sets():
+    ret = board.sets(0,0)
+    assert ret['row'] == 0
+    assert ret['col'] == 0
+    assert ret['sqr'] == 0
+
+    ret = board.sets(1,0)
+    print(ret)
+    assert ret['row'] == 0
+    assert ret['col'] == 1
+    assert ret['sqr'] == 0
+
+    ret = board.sets(0,1)
+    print(ret)
+    assert ret['row'] == 1
+    assert ret['col'] == 0
+    assert ret['sqr'] == 0
+
+    ret = board.sets(3,3)
+    print(ret)
+    assert ret['row'] == 3
+    assert ret['col'] == 3
+    assert ret['sqr'] == 4
+
+    ret = board.sets(3,0)
+    print(ret)
+    assert ret['row'] == 0
+    assert ret['col'] == 3
+    assert ret['sqr'] == 1
+
+    ret = board.sets(8,8)
+    print(ret)
+    assert ret['row'] == 8
+    assert ret['col'] == 8
+    assert ret['sqr'] == 8

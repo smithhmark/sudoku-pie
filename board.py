@@ -51,7 +51,7 @@ SQUARES = [
     [6,6,6,7,7,7,8,8,8,],
     ]
 
-def get_square(rowid, columnid):
+def get_square(columnid, rowid):
     return SQUARES[rowid][columnid]
 
 def square(brd, ii):
@@ -103,3 +103,16 @@ def validate_set(data):
         return False
     return True
 
+def sets(col, row):
+    # takes a coordinate and retures the ordinals for each of the sets that
+    # intersects that coordinate
+    # returns a dict holding the ordinals.
+    res = {
+        'row': None,
+        'col': None,
+        'sqr': None,
+        }
+    res['row'] = row
+    res['col'] = col
+    res['sqr'] = get_square(col, row)
+    return res
