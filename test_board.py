@@ -161,3 +161,18 @@ def test_from_string():
         for xx, cell in enumerate(row):
             assert len(row) == len(expected_out_put[yy])
             assert cell == expected_out_put[yy][xx]
+
+def test__possibilities():
+    s1 = [0]
+    s2 = [0]
+    s3 = [0]
+    act_op = board._possibilities(s1, s2, s3)
+    print(act_op)
+    assert act_op == set([1,2,3,4,5,6,7,8,9,])
+
+    s1 = [0,2,3,4,5,6,7,8,9]
+    s2 = [0]
+    s3 = [0,2,3,]
+    act_op = board._possibilities(s1, s2, s3)
+    print(act_op)
+    assert act_op == set([1,])

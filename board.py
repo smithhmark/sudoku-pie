@@ -123,3 +123,23 @@ def sets(col, row):
     res['col'] = col
     res['sqr'] = get_square(col, row)
     return res
+
+def _possibilities(row_data, col_data, sqr_data):
+    # determine what numbers remain possiblities based ton the provided sets
+    res = set(range(1,10))
+    res.difference_update(set(row_data))
+    res.difference_update(set(col_data))
+    res.difference_update(set(sqr_data))
+    return res
+
+def allowable_at(brd, col, row):
+    # based on the position in a board, determine what are allowable options
+    cur_val = brd[_index(col,row)]
+    if cur_val == 0:
+        sts = sets(col, row)
+        row_data = row(brd, sets['row'])
+        col_data = row(brd, sets['col'])
+        sqr_data = row(brd, sets['sqr'])
+        return _possibilities(row_data, col_data, sqr_data)
+    else:
+        return [cur_val]
