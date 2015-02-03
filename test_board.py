@@ -231,3 +231,17 @@ def test_allowable_at():
     act_val = board.allowable_at(b1, 2, 2)
     print(act_val)
     assert act_val == set([1])
+
+    b1 = '''000000000
+            456000000
+            780000000
+            000000000
+            000000000
+            000000000
+            000000000
+            000000000
+            000000000'''
+    b1 = board.from_string(b1)
+    act_val = board.allowable_at(b1, 2, 2)
+    print(act_val)
+    assert act_val == set([1,2,3,9])
