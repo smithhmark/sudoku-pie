@@ -89,7 +89,7 @@ def from_string(ss):
     rows = ss.split()
     brd = []
     for row in rows:
-        brd.append([int(cell) for cell in row.strip()])
+        brd.extend([int(cell) for cell in row.strip()])
     return brd
 
 def validate(brd):
@@ -132,14 +132,14 @@ def _possibilities(row_data, col_data, sqr_data):
     res.difference_update(set(sqr_data))
     return res
 
-def allowable_at(brd, col, row):
+def allowable_at(brd, col_id, row_id):
     # based on the position in a board, determine what are allowable options
-    cur_val = brd[_index(col,row)]
+    cur_val = brd[_index(col_id, row_id)]
     if cur_val == 0:
-        sts = sets(col, row)
-        row_data = row(brd, sets['row'])
-        col_data = row(brd, sets['col'])
-        sqr_data = row(brd, sets['sqr'])
+        sts = sets(col_id, row_id)
+        row_data = row(brd, sts['row'])
+        col_data = column(brd, sts['col'])
+        sqr_data = square(brd, sts['sqr'])
         return _possibilities(row_data, col_data, sqr_data)
     else:
-        return [cur_val]
+        return set([cur_val])

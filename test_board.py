@@ -143,24 +143,21 @@ def test_from_string():
                 012345678
                 012345678"""
     expected_out_put = [
-            [0,1,2,3,4,5,6,7,8,],
-            [0,1,2,3,4,5,6,7,8,],
-            [0,1,2,3,4,5,6,7,8,],
-            [0,1,2,3,4,5,6,7,8,],
-            [0,1,2,3,4,5,6,7,8,],
-            [0,1,2,3,4,5,6,7,8,],
-            [0,1,2,3,4,5,6,7,8,],
-            [0,1,2,3,4,5,6,7,8,],
-            [0,1,2,3,4,5,6,7,8,],
-            [0,1,2,3,4,5,6,7,8,],
+            0,1,2,3,4,5,6,7,8,
+            0,1,2,3,4,5,6,7,8,
+            0,1,2,3,4,5,6,7,8,
+            0,1,2,3,4,5,6,7,8,
+            0,1,2,3,4,5,6,7,8,
+            0,1,2,3,4,5,6,7,8,
+            0,1,2,3,4,5,6,7,8,
+            0,1,2,3,4,5,6,7,8,
+            0,1,2,3,4,5,6,7,8,
             ]
     act_op = board.from_string(in_put)
-    assert len(act_op) == 9
+    assert len(act_op) == 9*9
     print(act_op)
-    for yy, row in enumerate(act_op):
-        for xx, cell in enumerate(row):
-            assert len(row) == len(expected_out_put[yy])
-            assert cell == expected_out_put[yy][xx]
+    for yy, cell in enumerate(act_op):
+        assert cell == expected_out_put[yy]
 
 def test__possibilities():
     s1 = [0]
@@ -176,3 +173,61 @@ def test__possibilities():
     act_op = board._possibilities(s1, s2, s3)
     print(act_op)
     assert act_op == set([1,])
+
+
+def test_allowable_at():
+    b1 = '''023456789
+            000000000
+            000000000
+            000000000
+            000000000
+            000000000
+            000000000
+            000000000
+            000000000'''
+    b1 = board.from_string(b1)
+    act_val = board.allowable_at(b1, 0, 0)
+    print(act_val)
+    assert act_val == set([1])
+
+    b1 = '''023000000
+            456000000
+            789000000
+            000000000
+            000000000
+            000000000
+            000000000
+            000000000
+            000000000'''
+    b1 = board.from_string(b1)
+    act_val = board.allowable_at(b1, 0, 0)
+    print(act_val)
+    assert act_val == set([1])
+
+    b1 = '''923000000
+            456000000
+            780000000
+            000000000
+            000000000
+            000000000
+            000000000
+            000000000
+            000000000'''
+    b1 = board.from_string(b1)
+    act_val = board.allowable_at(b1, 0, 0)
+    print(act_val)
+    assert act_val == set([9])
+
+    b1 = '''923000000
+            456000000
+            780000000
+            000000000
+            000000000
+            000000000
+            000000000
+            000000000
+            000000000'''
+    b1 = board.from_string(b1)
+    act_val = board.allowable_at(b1, 2, 2)
+    print(act_val)
+    assert act_val == set([1])
