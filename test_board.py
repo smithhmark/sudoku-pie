@@ -131,3 +131,33 @@ def test_sets():
     assert ret['row'] == 8
     assert ret['col'] == 8
     assert ret['sqr'] == 8
+
+def test_from_string():
+    in_put = """012345678
+                012345678
+                012345678
+                012345678
+                012345678
+                012345678
+                012345678
+                012345678
+                012345678"""
+    expected_out_put = [
+            [0,1,2,3,4,5,6,7,8,],
+            [0,1,2,3,4,5,6,7,8,],
+            [0,1,2,3,4,5,6,7,8,],
+            [0,1,2,3,4,5,6,7,8,],
+            [0,1,2,3,4,5,6,7,8,],
+            [0,1,2,3,4,5,6,7,8,],
+            [0,1,2,3,4,5,6,7,8,],
+            [0,1,2,3,4,5,6,7,8,],
+            [0,1,2,3,4,5,6,7,8,],
+            [0,1,2,3,4,5,6,7,8,],
+            ]
+    act_op = board.from_string(in_put)
+    assert len(act_op) == 9
+    print(act_op)
+    for yy, row in enumerate(act_op):
+        for xx, cell in enumerate(row):
+            assert len(row) == len(expected_out_put[yy])
+            assert cell == expected_out_put[yy][xx]

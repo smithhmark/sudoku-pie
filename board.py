@@ -85,6 +85,13 @@ def square(brd, ii):
         sqr.extend(row(brd, rid)[colstart:colstop])
     return sqr
 
+def from_string(ss):
+    rows = ss.split()
+    brd = []
+    for row in rows:
+        brd.append([int(cell) for cell in row.strip()])
+    return brd
+
 def validate(brd):
     down = [set() for unused in range(9)]
     across = [set() for unused in range(9)]
